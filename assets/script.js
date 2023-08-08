@@ -221,6 +221,10 @@ function checkAnswer(satQuestions, choice) {
             $(mainText).text(answer)
             $(mainBody).append(mainText)
             $(loading).remove();
+            window.scrollTo({
+                top: 600,
+                behavior: "smooth",
+              });
             var div = $('<div>', {id: 'divTest', style: 'padding-bottom: 20px; width: 100%'});
             $(mainBody).append(div);
             var question = $('<p>', {id: 'question', style: 'display: flex; align-items: center; width: 200px; height: 60px; justify-content: center; text-align: center; font-weight: 900'})
