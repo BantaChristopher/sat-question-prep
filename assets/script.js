@@ -122,7 +122,7 @@ function sendRequest(questionPrompt) {
             $('#mainBox').removeClass('questions')            
             var mainBody = $('<main>', {id: 'mainRemove', class: 'questions'})
             $('#mainBox').append(mainBody)
-            var mainText = $('<textarea readonly>')
+            var mainText = $('<pre>')
             $(mainText).text(satQuestions)
             $(mainBody).append(mainText)
             $(loading).remove();
@@ -217,7 +217,7 @@ function checkAnswer(satQuestions, choice) {
             $('#mainBox').removeClass('questions')            
             var mainBody = $('<main>', {id: 'secondRemove', class: 'questions'})
             $('#mainBox').append(mainBody)
-            var mainText = $('<textarea readonly>')
+            var mainText = $('<pre>')
             $(mainText).text(answer)
             $(mainBody).append(mainText)
             $(loading).remove();
