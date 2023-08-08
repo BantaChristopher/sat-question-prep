@@ -1,4 +1,5 @@
 var category = '';
+var questionPrompt = '';
 
 $('#vocabQuiz').on('click', function() {
     category = 'Vocabulary';
@@ -47,34 +48,39 @@ function removeLanding() {
 }
 
 function askChatGPT() {
-    console.log(category)
     switch(category) {
-        case 'Vocabulary': 
-            console.log('VOCAB');
+        case 'Vocabulary':
+            questionPrompt = "Can you teach me how to dougie";
+            sendRequest(questionPrompt);
             break;
-        case 'Text Structure and Purpose': 
-            console.log('TSP');
+        case 'Text Structure and Purpose':
+            questionPrompt = "Whats 1+1";
+            sendRequest(questionPrompt);
             break;
-        case 'Central Ideas and Details': 
-            console.log('CID');
+        case 'Central Ideas and Details':
+            questionPrompt = "how do i eat food properly";
+            sendRequest(questionPrompt);
             break;
-        case 'Textual Evidence': 
-            console.log('EVIDENCE');
+        case 'Textual Evidence':
+            questionPrompt = "do you also love the petting zoo? why";
+            sendRequest(questionPrompt);
             break;
         case 'Inferences': 
-            console.log('INFERENCES');
+            questionPrompt = "where should i go when im bored";
+            sendRequest(questionPrompt);
             break;
         case 'Boundaries':
-            console.log('BOUND');
+            questionPrompt = "whats the best music of all time";
+            sendRequest(questionPrompt);
             break;
         case 'Transitions': 
-            console.log('TRANSITIONS');
-            sendRequest();
+            questionPrompt = "Write an SAT style question with four options using a short passage using one of any of the following options correctly: In other words, therefore, likewise, nevertheless (3), still, therefore, indeed, furthermore, similarly (2), finally, therefore, specifically (2), furthermore, still, consequently, next, hence, however, additionally, in comparison, for example, subsequently, besides, thus";
+            sendRequest(questionPrompt);
             break;
     }
 }
 
-function sendRequest() {
+function sendRequest(questionPrompt) {
     // ChatGPT API endpoint URL and key
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
@@ -88,7 +94,7 @@ function sendRequest() {
             content: ''
         }, {
             role: 'user',
-            content: "Write an SAT style question with four options using a short passage using one of any of the following options correctly: In other words, therefore, likewise, nevertheless (3), still, therefore, indeed, furthermore, similarly (2), finally, therefore, specifically (2), furthermore, still, consequently, next, hence, however, additionally, in comparison, for example, subsequently, besides, thus"
+            content: questionPrompt
         }],
         
         max_tokens: 1000,
@@ -209,7 +215,7 @@ function checkAnswer(satQuestions, choice) {
         .then(data => {
             answer = data.choices[0].message.content;
             $('#mainBox').removeClass('questions')            
-            var mainBody = $('<main>', {id: 'mainRemove', class: 'questions'})
+            var mainBody = $('<main>', {id: 'secondRemove', class: 'questions'})
             $('#mainBox').append(mainBody)
             var mainText = $('<textarea readonly>')
             $(mainText).text(answer)
@@ -223,5 +229,13 @@ function checkAnswer(satQuestions, choice) {
             var mainMenu = $('<p>', {id: 'mainMenu', style: 'display: flex; align-items: center; width: 200px; height: 60px; justify-content: center; text-align: center; font-weight: 900'})
             $(mainMenu).text('Main Menu')
             $(div).append(mainMenu)
+            $(question).on('click', function() {
+                $('#mainRemove').remove();
+                $('#secondRemove').remove();
+                askChatGPT();
+            });
+            $(mainMenu).on('click', function() {
+                location.reload();
+            })
         })
 }
