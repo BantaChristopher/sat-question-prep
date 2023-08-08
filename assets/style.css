@@ -12,14 +12,15 @@ body {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 25px;
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    width: 100%;
 }
 
 .header a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .questions {
@@ -111,4 +112,12 @@ textarea {
     font-size: large;
     font-family: 'Poppins', sans-serif;
     resize: none;
+}
+
+#copyright {
+    position: fixed;
+    left: 20px;
+    bottom: 0;
+    width: 100%;
+    color: white;
 }
