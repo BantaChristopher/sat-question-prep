@@ -116,7 +116,7 @@ function sendRequest() {
             $('#mainBox').removeClass('questions')            
             var mainBody = $('<main>', {id: 'mainRemove', class: 'questions'})
             $('#mainBox').append(mainBody)
-            var mainText = $('<textarea>')
+            var mainText = $('<textarea readonly>')
             $(mainText).text(satQuestions)
             $(mainBody).append(mainText)
             $(loading).remove();
@@ -211,15 +211,17 @@ function checkAnswer(satQuestions, choice) {
             $('#mainBox').removeClass('questions')            
             var mainBody = $('<main>', {id: 'mainRemove', class: 'questions'})
             $('#mainBox').append(mainBody)
-            var mainText = $('<textarea>')
+            var mainText = $('<textarea readonly>')
             $(mainText).text(answer)
             $(mainBody).append(mainText)
             $(loading).remove();
-            var question = $('<p>', {id: 'question', style: 'width: 200px; text-align: center; font-weight: 900'})
+            var div = $('<div>', {id: 'divTest', style: 'padding-bottom: 20px; width: 100%'});
+            $(mainBody).append(div);
+            var question = $('<p>', {id: 'question', style: 'display: flex; align-items: center; width: 200px; height: 60px; justify-content: center; text-align: center; font-weight: 900'})
             $(question).text('Generate Another Question')
-            $(mainBody).append(question)
-            var mainMenu = $('<p>', {id: 'mainMenu', style: 'width: 200px; text-align: center; font-weight: 900'})
+            $(div).append(question)
+            var mainMenu = $('<p>', {id: 'mainMenu', style: 'display: flex; align-items: center; width: 200px; height: 60px; justify-content: center; text-align: center; font-weight: 900'})
             $(mainMenu).text('Main Menu')
-            $(mainBody).append(mainMenu)
+            $(div).append(mainMenu)
         })
 }

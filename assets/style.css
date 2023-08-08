@@ -87,28 +87,28 @@ li {
 
 div {
     align-content: space-between;
-    width: 75%;
     display: flex;
+    width: 75%;
     justify-content: space-evenly;
 }
 
- #input-answer {
+
+#input-answer {
     font-style: italic;
     color: gray;
     border-top: 2px solid gray;
     /* margin-top: 10px; */
     padding-top: 5px;
     margin: 10px 25%;
- }
+}
 
- textarea {
-    min-width: 1000px;
+textarea {
+    min-width: 100%;
     min-height: 600px;
-    max-width: 1050px;
-    max-height: 650px;
     background-color: #081b29;
     color: #ededed;
     border: none;
     font-size: large;
     font-family: 'Poppins', sans-serif;
- }
+    resize: none;
+}
